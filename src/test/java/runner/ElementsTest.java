@@ -11,5 +11,5 @@ import org.testng.annotations.Test;
         features = "src/test/resources/features/avitoTest.feature"
 )
 
-public class RunnerTest  extends AbstractTestNGCucumberTests {
+public class ElementsTest extends AbstractTestNGCucumberTests {
 }
