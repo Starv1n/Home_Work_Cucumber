@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import utilities.Driver;
 import utilities.Encoder;
-import utilities.WrongSiteException;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -46,9 +45,8 @@ public class ChooseElements {
         return Driver.getDriver().findElement(AvitoElement.CHECKBOX_WITH_PHOTO.by);
     }
 
-    public static void  checkIfSiteOpened(String string) throws UnsupportedEncodingException, WrongSiteException {
-        if (Driver.getDriver().getCurrentUrl().contains(Encoder.encodeValue(string)));
-        else throw new WrongSiteException("This is wrong site");
+    public static boolean checkIfSiteOpened(String string) throws UnsupportedEncodingException {
+        return Driver.getDriver().getCurrentUrl().contains(Encoder.encodeValue(string));
     }
 
     public static WebElement selectMoneyFilter() {

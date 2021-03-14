@@ -8,9 +8,9 @@ import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import utilities.Driver;
-import utilities.WrongSiteException;
 
 import java.io.UnsupportedEncodingException;
 import java.util.concurrent.TimeUnit;
@@ -71,8 +71,8 @@ public class Steps {
     }
 
     @Тогда("^открыласть страница результатов по запросу (.*)$")
-    public void открыласть_страница_результатов_по_запросу_принтер(String string) throws UnsupportedEncodingException, WrongSiteException {
-        ChooseElements.checkIfSiteOpened(string);
+    public void открыласть_страница_результатов_по_запросу_принтер(String string) throws UnsupportedEncodingException{
+        Assert.assertTrue(ChooseElements.checkIfSiteOpened(string));
     }
 
     @Тогда("активирован чекбокс только с фотографией")
