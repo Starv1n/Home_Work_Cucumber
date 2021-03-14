@@ -11,19 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Elements {
 
-    public void initDriver(){
-        Driver.getDriver().manage().window().maximize();
-        Driver.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-    }
-
-    public void closeDriver(){
-        Driver.closeDriver();
-    }
-
-    public void openAvito(){
-        Driver.getDriver().get("https://www.avito.ru/");
-    }
-
     public void selectCategory(Categories categories) {
         selectFromList(Driver.getDriver().findElement(AvitoElement.SELECT_CATEGORY.by), categories.value);
     }
