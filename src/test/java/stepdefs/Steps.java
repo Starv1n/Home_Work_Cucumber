@@ -41,53 +41,53 @@ public class Steps {
     }
 
     @Пусть("открыт ресурс Авито")
-    public void открыт_ресурс_авито() {
+    public void openSite() {
         Driver.getDriver().get("https://www.avito.ru/");
         element = new Elements();
     }
 
     @Пусть("в выпадающием списке категорий выбрана {categories}")
-    public void в_выпадающием_списке_категорийвыбрана_оргтехника(Categories category) {
+    public void selectCategory(Categories category) {
         element.selectCategory(category);
     }
 
     @Пусть("^в поле поиска введено значение (.*)$")
-    public void в_поле_поиска_введено_значение_принтер(String string) {
+    public void printInSearchTextField(String string) {
         element.printInSearchTextField(string);
     }
 
     @Тогда("кликнуть по выпадающему списку региона")
-    public void кликнуть_по_выпадающему_списку_региона() {
+    public void clickChooseRegion() {
         element.clickChooseRegion();
     }
 
     @Тогда("^в поле региона введено значение (.*)$")
-    public void в_поле_региона_введено_значение_владивосток(String string) {
+    public void printInLocationTextField(String string) {
         element.printInLocationTextField(string);
     }
 
     @Тогда("нажата кнопка показать объявления")
-    public void нажата_кнопка_показать_объявления() {
+    public void clickShowResultsButton() {
         element.clickShowResultsButton();
     }
 
     @Тогда("^открыласть страница результатов по запросу (.*)$")
-    public void открыласть_страница_результатов_по_запросу_принтер(String string) throws UnsupportedEncodingException {
+    public void checkIfNeededSiteOpened(String string) throws UnsupportedEncodingException {
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(Encoder.encodeValue(string)));
     }
 
     @Тогда("активирован чекбокс только с фотографией")
-    public void активирован_чекбокс_только_с_фотографией() {
+    public void clickCheckBoxWithPhoto() {
         element.clickCheckBoxWithPhoto();
     }
 
     @Тогда("в выпадающем списке сортировки выбрано {moneyFilter}")
-    public void в_выпадающем_списке_сортировки_выбрано_дороже(MoneyFilter moneyFilter) {
+    public void selectMoneyFilter(MoneyFilter moneyFilter) {
         element.selectMoneyFilter(moneyFilter);
     }
 
     @Тогда("^в консоль выведено название и цена (\\d+) первых товаров$")
-    public void в_консоль_выведено_название_и_цена_первых_товаров(Integer int1) {
+    public void printNameANdPrice(Integer int1) {
         element.printNameANdPrice(int1);
     }
 }
