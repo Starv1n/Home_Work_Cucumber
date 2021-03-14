@@ -8,9 +8,7 @@ import utilities.Encoder;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-
 public class ChooseElements {
-
 
     public static WebElement selectCategory() {
         return Driver.getDriver().findElement(AvitoElement.SELECT_CATEGORY.by);

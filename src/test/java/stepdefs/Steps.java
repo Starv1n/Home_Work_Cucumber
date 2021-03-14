@@ -38,7 +38,6 @@ public class Steps {
         Driver.closeDriver();
     }
 
-
     @Пусть("открыт ресурс Авито")
     public void открыт_ресурс_авито() {
         Driver.getDriver().get("https://www.avito.ru/");
@@ -71,7 +70,7 @@ public class Steps {
     }
 
     @Тогда("^открыласть страница результатов по запросу (.*)$")
-    public void открыласть_страница_результатов_по_запросу_принтер(String string) throws UnsupportedEncodingException{
+    public void открыласть_страница_результатов_по_запросу_принтер(String string) throws UnsupportedEncodingException {
         Assert.assertTrue(ChooseElements.checkIfSiteOpened(string));
     }
 

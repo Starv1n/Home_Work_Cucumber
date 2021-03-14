@@ -6,7 +6,6 @@ public enum MoneyFilter {
     Дешевле("1"),
     По_дате("104");
 
-
     public final String value;
 
     MoneyFilter(String value) {

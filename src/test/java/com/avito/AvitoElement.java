@@ -15,8 +15,7 @@ public enum AvitoElement {
     MONEY_FILTER(By.xpath("//div[contains(@class,'index-content')]//select[contains(@class,'select')]")),
     FIELD_WITH_PRODUCTS(By.xpath("//div[contains(@class,'items-items')]")),
     PRODUCT_LIST(By.xpath("//h3[@itemprop='name']")),
-    PRICE_LIST(By.xpath("//span[contains(@class,'price-price')]"))
-    ;
+    PRICE_LIST(By.xpath("//span[contains(@class,'price-price')]"));
 
     public final By by;
 
