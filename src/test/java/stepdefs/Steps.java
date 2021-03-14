@@ -1,21 +1,23 @@
 package stepdefs;
 
 import com.avito.Categories;
-import com.avito.ChooseElements;
+import com.avito.Elements;
 import com.avito.MoneyFilter;
+import driver.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
-import utilities.Driver;
+import utilities.Encoder;
 
 import java.io.UnsupportedEncodingException;
 import java.util.concurrent.TimeUnit;
 
 public class Steps {
+
+    Elements element;
 
     @ParameterType(".*")
     public Categories categories(String category) {
@@ -41,51 +43,51 @@ public class Steps {
     @Пусть("открыт ресурс Авито")
     public void открыт_ресурс_авито() {
         Driver.getDriver().get("https://www.avito.ru/");
+        element = new Elements();
     }
 
     @Пусть("в выпадающием списке категорий выбрана {categories}")
     public void в_выпадающием_списке_категорийвыбрана_оргтехника(Categories category) {
-        ChooseElements.selectFromList(category.value, ChooseElements.selectCategory());
+        element.selectCategory(category);
     }
 
     @Пусть("^в поле поиска введено значение (.*)$")
     public void в_поле_поиска_введено_значение_принтер(String string) {
-        ChooseElements.printInSearchTextField().sendKeys(string);
+        element.printInSearchTextField(string);
     }
 
     @Тогда("кликнуть по выпадающему списку региона")
     public void кликнуть_по_выпадающему_списку_региона() {
-        ChooseElements.clickChooseRegion().click();
+        element.clickChooseRegion();
     }
 
     @Тогда("^в поле региона введено значение (.*)$")
     public void в_поле_региона_введено_значение_владивосток(String string) {
-        ChooseElements.printInLocationTextField().sendKeys(string + Keys.ENTER);
-        ChooseElements.chooseFirstLocationOption().click();
+        element.printInLocationTextField(string);
     }
 
     @Тогда("нажата кнопка показать объявления")
     public void нажата_кнопка_показать_объявления() {
-        ChooseElements.clickShowResultsButton().click();
+        element.clickShowResultsButton();
     }
 
     @Тогда("^открыласть страница результатов по запросу (.*)$")
     public void открыласть_страница_результатов_по_запросу_принтер(String string) throws UnsupportedEncodingException {
-        Assert.assertTrue(ChooseElements.checkIfSiteOpened(string));
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(Encoder.encodeValue(string)));
     }
 
     @Тогда("активирован чекбокс только с фотографией")
     public void активирован_чекбокс_только_с_фотографией() {
-        ChooseElements.clickCheckBoxWithPhoto().click();
+        element.clickCheckBoxWithPhoto();
     }
 
     @Тогда("в выпадающем списке сортировки выбрано {moneyFilter}")
     public void в_выпадающем_списке_сортировки_выбрано_дороже(MoneyFilter moneyFilter) {
-        ChooseElements.selectFromList(moneyFilter.value, ChooseElements.selectMoneyFilter());
+        element.selectMoneyFilter(moneyFilter);
     }
 
     @Тогда("^в консоль выведено название и цена (\\d+) первых товаров$")
     public void в_консоль_выведено_название_и_цена_первых_товаров(Integer int1) {
-        ChooseElements.printNameANdPrice(int1);
+        element.printNameANdPrice(int1);
     }
 }
